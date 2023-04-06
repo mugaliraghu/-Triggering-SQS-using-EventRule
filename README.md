@@ -1,1 +1,1 @@
-# -Triggering-SQS-using-EventRule
+# Triggering-SNS-using-EventRule
