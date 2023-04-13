@@ -26,7 +26,13 @@ Resources:
           - "EC2 Instance State-change Notification"
       Targets:
         - Arn: !Ref MySnsTopic
-          Id: "SNStopic"
+          Id: "SNStopic"InputTransformer:
+          InputPathsMap:
+              instance: $.detail.instance-id
+              state: $.detail.state
+          InputTemplate: ' "The state of Instance <instance> is <state>"'
+          
+          
   # Allow EventBridge to invoke SNS
   EventBridgeToToSnsPolicy:
     Type: AWS::SNS::TopicPolicy
